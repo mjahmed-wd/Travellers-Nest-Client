@@ -1,0 +1,6 @@
+.hero-section{
+    background-image: url('../../../../image/hero-search-bg.png');
+    background-size: cover;
+    height: 60vh;
+    color: white;
+}

@@ -8,13 +8,18 @@ import { useState } from "react";
 import ProvideAuth from "./components/Shared/ProvideAuth/ProvideAuth";
 import PrivateRoute from "./components/Shared/PrivateRoute/PrivateRoute";
 import Pass from "./components/Shared/Pass/Pass";
-export const UserContext = createContext();
+import "bootstrap/dist/css/bootstrap.min.css";
+import IndividualProduct from "./components/User/ToCheckOut/IndividualProduct/IndividualProduct";
+import CheckOut from "./components/User/ToCheckOut/CheckOut/CheckOut";
+import Orders from "./components/User/Orders/Orders";
+import Review from "./components/User/Review/Review";
 
 function App() {
   const [user, setUser] = useState({ isSignedIn: false });
   return (
     <ProvideAuth>
-    {/* <UserContext.Provider value={[user, setUser]}> */}
+      
+      {/* <UserContext.Provider value={[user, setUser]}> */}
       <Router>
         <Switch>
           <Route exact path="/">
@@ -23,12 +28,31 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/property/:id">
+            <IndividualProduct />
+          </Route>
+          <Route path="/checkout">
+            <CheckOut />
+          </Route>
+          
+          <Route path="/orders">
+            <Orders />
+          </Route>
+          <Route path="/userReview">
+            <Review />
+          </Route>
+          <Route path="/property/:id">
+            <IndividualProduct />
+          </Route>
           <PrivateRoute path="/pass">
-            <Pass/>
+            <Pass />
+          </PrivateRoute>
+          <PrivateRoute path="/admin">
+            <Pass />
           </PrivateRoute>
         </Switch>
       </Router>
-    {/* </UserContext.Provider> */}
+      {/* </UserContext.Provider> */}
     </ProvideAuth>
   );
 }

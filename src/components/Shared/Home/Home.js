@@ -1,10 +1,18 @@
 import React from 'react';
+import Header from '../Header/Header';
+import PropertyShowcase from './PropertyShowcase/PropertyShowcase';
+import ReviewContainer from './Review/ReviewContainer/ReviewContainer';
+import Search from './Search/Search';
 
 const Home = () => {
     return (
-        <div>
-            <h2>This is home</h2>
-        </div>
+        <>
+            <Header/>
+            <Search/>
+            <PropertyShowcase/>
+            <h2>Header</h2>
+            <ReviewContainer/>
+        </>
     );
 };
 
