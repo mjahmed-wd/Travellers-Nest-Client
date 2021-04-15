@@ -7,6 +7,7 @@ import { createContext } from "react";
 import { useState } from "react";
 import ProvideAuth from "./components/Shared/ProvideAuth/ProvideAuth";
 import PrivateRoute from "./components/Shared/PrivateRoute/PrivateRoute";
+import Pass from "./components/Shared/Pass/Pass";
 export const UserContext = createContext();
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
             <Login />
           </Route>
           <PrivateRoute path="/pass">
-            <h2>Protected</h2>
+            <Pass/>
           </PrivateRoute>
         </Switch>
       </Router>

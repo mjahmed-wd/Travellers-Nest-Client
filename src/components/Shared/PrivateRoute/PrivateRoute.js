@@ -15,7 +15,7 @@ console.log(user)
     <Route
       {...rest}
       render={({ location }) =>
-        user.email ? (
+        (user&& user.email) ? (
           children
         ) : (
           <Redirect

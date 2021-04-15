@@ -3,9 +3,10 @@ import firebase from "firebase/app";
 import { useState } from "react";
 import { useEffect } from "react";
 import { firebaseInitialization } from "../Login/FirebaseRefectored";
-import { useHistory, useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { createContext } from "react";
+
 
 export const AuthContext = createContext();
 
@@ -14,7 +15,7 @@ const ProvideAuth = ({ children }) => {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [pending, setPending] = useState(true);
-  //   const auth = useProvideAuth();
+    const auth = useProvideAuth();
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -29,7 +30,7 @@ const ProvideAuth = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{currentUser}}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{currentUser,auth}}>{children}</AuthContext.Provider>
   );
 };
 
@@ -40,9 +41,6 @@ export const useAuth = () => {
 };
 
 function useProvideAuth() {
-  // let history = useHistory();
-  // let location = useLocation();
-  // let { from } = location.state || { from: { pathname: "/" } };
 
   firebaseInitialization();
 
@@ -50,6 +48,7 @@ function useProvideAuth() {
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
   const signin = () => {
+      
     const provider = new firebase.auth.GoogleAuthProvider();
 
     return firebase
@@ -59,7 +58,6 @@ function useProvideAuth() {
         /** @type {firebase.auth.OAuthCredential} */
         var googleUser = result.user;
         setUser(result.user);
-        // history.replace(from);
         // ...
       })
       .catch((error) => {
