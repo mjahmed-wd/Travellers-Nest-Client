@@ -32,7 +32,7 @@ const ManageProperty = () => {
           )}
 
           <PropertyContext.Provider
-            value={{propertyChangeStatus, setPropertyChangeStatus}}
+            value={[propertyChangeStatus, setPropertyChangeStatus]}
           >
             {properties.length > 0 && (
               <div className="p-4">

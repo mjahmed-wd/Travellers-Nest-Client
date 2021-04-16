@@ -12,6 +12,9 @@ const SideNavigation = () => {
       <Link to="/userReview" className={url === "userReview" ? "active" : ""}>
         Review
       </Link>
+      <Link to="/manageOrders" className={url === "manageOrders" ? "active" : ""}>
+        Manage Orders
+      </Link>
       <Link to="/addProperty" className={url === "addProperty" ? "active" : ""}>
         Add Property
       </Link>

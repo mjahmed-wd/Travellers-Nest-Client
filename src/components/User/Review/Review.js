@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Header from "../../Shared/Header/Header";
 import SharingSidebar from "../../Shared/Sidebar/SharingSidebar/SharingSidebar";
-import SideNavigation from "../../Shared/Sidebar/SideNavigation";
+// import SideNavigation from "../../Shared/Sidebar/SideNavigation";
 
 const Review = () => {
   const {
@@ -20,7 +20,7 @@ const Review = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-          console.log("Review Added")
+          alert("Review Added")
       });
   };
   return (

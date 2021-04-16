@@ -5,6 +5,7 @@ import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined"
 import UpdateProperty from "./UpdateProperty";
 import { useContext } from "react";
 import { PropertyContext } from "../ManageProperty";
+import { Button, Modal } from "react-bootstrap";
 
 const ManageSingleProperty = ({ property }) => {
   const [show, setShow] = useState(false);
@@ -28,22 +29,22 @@ console.log(modalVisibility)
   };
   return (
     <tr>
-      {/* <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Update Information of {name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <UpdateSingleProduct product={product} handleClose={handleClose} />
+            <UpdateProperty property={property} handleClose={handleClose} />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
           </Modal.Footer>
-        </Modal> */}
+        </Modal>
 
         {/* react modal */}
-        <UpdateProperty setModalVisibility={setModalVisibility}/>
+        {/* <UpdateProperty setModalVisibility={setModalVisibility}/> */}
         
       {hidden === false && (
         <>
@@ -56,7 +57,7 @@ console.log(modalVisibility)
           <td className="d-flex justify-content-around">
             <EditOutlinedIcon
               style={{ cursor: "pointer" }}
-              onClick={()=>setModalVisibility(true)}
+              onClick={()=>setShow(true)}
             />
             <DeleteForeverOutlinedIcon
               style={{ cursor: "pointer" }}
