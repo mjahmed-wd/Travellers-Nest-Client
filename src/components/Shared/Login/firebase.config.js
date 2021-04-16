@@ -1,10 +1,9 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyA_2yrnTgT5ZmmwZJ1ULhKE-gSCtl4U1BI",
-    authDomain: "fashion-fare.firebaseapp.com",
-    projectId: "fashion-fare",
-    storageBucket: "fashion-fare.appspot.com",
-    messagingSenderId: "1066503500358",
-    appId: "1:1066503500358:web:f6d8eac5efe10a0c859047"
-  };
-  
+  apiKey: "AIzaSyChRpVy-9S5m9VqMb7WW-5kfzk1CL41zn8",
+  authDomain: "travellers-nest.firebaseapp.com",
+  projectId: "travellers-nest",
+  storageBucket: "travellers-nest.appspot.com",
+  messagingSenderId: "391055920915",
+  appId: "1:391055920915:web:d26258714231bcd64794e6"
+};
   export default firebaseConfig;

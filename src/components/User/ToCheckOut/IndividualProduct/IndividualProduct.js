@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Shared/ProvideAuth/ProvideAuth";
 const IndividualProduct = () => {
   const history=useHistory()
   const { currentUser, auth } = useContext(AuthContext);
-  const { displayName: userName, photoURL, email } = currentUser;
+  // const { displayName: userName, photoURL, email } = currentUser;
   const { id } = useParams();
   const [property, setProperty] = useState({});
   useEffect(() => {

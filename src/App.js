@@ -13,13 +13,11 @@ import IndividualProduct from "./components/User/ToCheckOut/IndividualProduct/In
 import CheckOut from "./components/User/ToCheckOut/CheckOut/CheckOut";
 import Orders from "./components/User/Orders/Orders";
 import Review from "./components/User/Review/Review";
+import AddProperty from "./components/Admin/Property/AddProperty/AddProperty";
 
 function App() {
-  const [user, setUser] = useState({ isSignedIn: false });
   return (
     <ProvideAuth>
-      
-      {/* <UserContext.Provider value={[user, setUser]}> */}
       <Router>
         <Switch>
           <Route exact path="/">
@@ -31,24 +29,25 @@ function App() {
           <Route path="/property/:id">
             <IndividualProduct />
           </Route>
-          <Route path="/checkout">
+          <PrivateRoute path="/checkout">
             <CheckOut />
-          </Route>
-          
-          <Route path="/orders">
+          </PrivateRoute>
+
+          <PrivateRoute path="/orders">
             <Orders />
-          </Route>
-          <Route path="/userReview">
+          </PrivateRoute>
+          <PrivateRoute path="/userReview">
             <Review />
-          </Route>
-          <Route path="/property/:id">
-            <IndividualProduct />
-          </Route>
+          </PrivateRoute>
           <PrivateRoute path="/pass">
             <Pass />
           </PrivateRoute>
           <PrivateRoute path="/admin">
             <Pass />
+          </PrivateRoute>
+          {/* Admin */}
+          <PrivateRoute path="/addProperty">
+            <AddProperty />
           </PrivateRoute>
         </Switch>
       </Router>

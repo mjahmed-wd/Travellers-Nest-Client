@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { AuthContext } from "../../Shared/ProvideAuth/ProvideAuth";
+import SharingSidebar from "../../Shared/Sidebar/SharingSidebar/SharingSidebar";
 import IndividualOrderItem from "./IndividualOrderItem";
 
 const Orders = () => {
@@ -14,7 +15,7 @@ const Orders = () => {
         setOrders(data)
       });
   }, [currentUser]);
-  return  <div>
+  return  <SharingSidebar>
   <h3 className="text-center mb-4 mt-4">You have {orders.length} {orders.length>1?"orders":"order"} running.</h3>
   <Table striped bordered hover>
     <thead>
@@ -36,7 +37,7 @@ const Orders = () => {
   </Table>
   
   
-</div>
+</SharingSidebar>
 };
 
 export default Orders;

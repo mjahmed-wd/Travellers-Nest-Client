@@ -14,7 +14,7 @@ const ReviewContainer = () => {
     return (
         <div>
             {
-                allReviews.map(review=><ReviewCard singleReview={review} />)
+                allReviews.map(review=><ReviewCard key={review._id} singleReview={review} />)
             }
         </div>
     );

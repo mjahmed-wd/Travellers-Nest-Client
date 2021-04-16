@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Header from "../../Shared/Header/Header";
+import SharingSidebar from "../../Shared/Sidebar/SharingSidebar/SharingSidebar";
 import SideNavigation from "../../Shared/Sidebar/SideNavigation";
 
 const Review = () => {
@@ -23,14 +24,8 @@ const Review = () => {
       });
   };
   return (
-    <>
-      <Header />
-      <div className="row g-0">
-        <div className="col-md-3">
-          <SideNavigation />
-        </div>
-        <div className="col-md-9">
-          <form onSubmit={handleSubmit(onSubmit)}>
+    <SharingSidebar>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
               <label defaultValue="test" htmlFor="name" className="form-label">
                 Your Name
@@ -58,9 +53,7 @@ const Review = () => {
             </div>
             <input type="submit" />
           </form>
-        </div>
-      </div>
-    </>
+    </SharingSidebar>
   );
 };
 
