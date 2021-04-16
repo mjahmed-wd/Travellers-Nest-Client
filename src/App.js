@@ -14,6 +14,7 @@ import CheckOut from "./components/User/ToCheckOut/CheckOut/CheckOut";
 import Orders from "./components/User/Orders/Orders";
 import Review from "./components/User/Review/Review";
 import AddProperty from "./components/Admin/Property/AddProperty/AddProperty";
+import ManageProperty from "./components/Admin/Property/ManageProperty/ManageProperty";
 
 function App() {
   return (
@@ -48,6 +49,9 @@ function App() {
           {/* Admin */}
           <PrivateRoute path="/addProperty">
             <AddProperty />
+          </PrivateRoute>
+          <PrivateRoute path="/manageProperty">
+            <ManageProperty />
           </PrivateRoute>
         </Switch>
       </Router>
