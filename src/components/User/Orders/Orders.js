@@ -8,7 +8,7 @@ const Orders = () => {
   const { currentUser, auth } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/orders/${currentUser.email}`)
+    fetch(`https://travellers-nest.herokuapp.com/orders/${currentUser.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

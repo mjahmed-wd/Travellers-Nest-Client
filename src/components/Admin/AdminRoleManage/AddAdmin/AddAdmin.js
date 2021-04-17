@@ -13,7 +13,7 @@ const AddAdmin = () => {
       designation: data.designation
     };
     console.log(addAdminData);
-    const url = `http://localhost:5000/addAdmin`;
+    const url = `https://travellers-nest.herokuapp.com/addAdmin`;
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

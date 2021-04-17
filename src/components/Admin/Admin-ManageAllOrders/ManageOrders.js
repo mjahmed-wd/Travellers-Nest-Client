@@ -11,7 +11,7 @@ const ManageOrders = () => {
     const [placedOrders, setPlacedOrders] = useState([]);
     const [changeOrderStatus, setChangeOrderStatus] = useState(false);
     useEffect(() => {
-      fetch(`http://localhost:5000/allPlacedOrders`)
+      fetch(`https://travellers-nest.herokuapp.com/allPlacedOrders`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data)

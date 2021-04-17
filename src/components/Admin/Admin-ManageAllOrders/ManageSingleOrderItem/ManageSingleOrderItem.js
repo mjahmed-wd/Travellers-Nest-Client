@@ -28,7 +28,7 @@ const ManageSingleOrderItem = ({ order }) => {
   //   const { _id, name, price, address, country, description } = order;
   const [hidden, makeHidden] = useState(false);
   //   const handleDelete = () => {
-  //     fetch(`http://localhost:5000/deleteProperty/${_id}`, {
+  //     fetch(`https://travellers-nest.herokuapp.com/deleteProperty/${_id}`, {
   //       method: "DELETE",
   //       headers: { "Content-Type": "application/json" },
   //     })

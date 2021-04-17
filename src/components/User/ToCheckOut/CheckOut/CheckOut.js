@@ -47,7 +47,7 @@ const CheckOut = () => {
 
   const [property, setProperty] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/property/${id}`)
+    fetch(`https://travellers-nest.herokuapp.com/property/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProperty(data);
@@ -64,7 +64,7 @@ const CheckOut = () => {
       transactionID,
       status: "processing",
     };
-    fetch(`http://localhost:5000/addOrder`, {
+    fetch(`https://travellers-nest.herokuapp.com/addOrder`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderData),

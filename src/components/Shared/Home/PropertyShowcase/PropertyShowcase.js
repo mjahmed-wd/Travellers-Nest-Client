@@ -4,14 +4,14 @@ import IndividualPropertyCard from "./IndividualPropertyCard/IndividualPropertyC
 const PropertyShowcase = () => {
     const [properties,setProperties]=useState([])
   useEffect(() => {
-    fetch(`http://localhost:5000/allProperties`)
+    fetch(`https://travellers-nest.herokuapp.com/allProperties`)
     .then(res=>res.json())
     .then(data=>{
         setProperties(data)
     })
   }, []);
   return (
-    <div style={{height:"500px"}} className="d-flex justify-content-center align-items-center">
+    <div style={{height:"50vh"}} className="d-flex justify-content-center align-items-center">
       
         {
             properties.length && properties.map(property=><IndividualPropertyCard key={property._id} property={property}/>)

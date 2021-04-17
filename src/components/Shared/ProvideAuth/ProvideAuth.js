@@ -30,7 +30,7 @@ const ProvideAuth = ({ children }) => {
             // Handle error
           });
         // Check Admin Role
-        fetch(`http://localhost:5000/checkAdminRole/${user.email}`)
+        fetch(`https://travellers-nest.herokuapp.com/checkAdminRole/${user.email}`)
           .then((res) => res.json())
           .then((data) => {
             console.log(data.length);
@@ -56,7 +56,7 @@ const ProvideAuth = ({ children }) => {
   }, []);
   // debugger
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/checkAdminRole/${currentUser.email}`)
+  //   fetch(`https://travellers-nest.herokuapp.com/checkAdminRole/${currentUser.email}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);

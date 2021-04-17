@@ -14,7 +14,7 @@ const ManageProperty = () => {
   const [properties, setProperties] = useState([]);
   const [propertyChangeStatus, setPropertyChangeStatus] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:5000/allProperties`)
+    fetch(`https://travellers-nest.herokuapp.com/allProperties`)
       .then((res) => res.json())
       .then((data) => {
         setProperties(data);

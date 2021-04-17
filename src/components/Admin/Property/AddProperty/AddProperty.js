@@ -18,7 +18,7 @@ const AddProperty = () => {
       imageURL: imageURL,
     };
     console.log(eventData);
-    const url = `http://localhost:5000/addProperty`;
+    const url = `https://travellers-nest.herokuapp.com/addProperty`;
     fetch(url, {
       method: "POST",
       headers: {

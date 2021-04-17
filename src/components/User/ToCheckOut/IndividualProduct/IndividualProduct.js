@@ -9,7 +9,7 @@ const IndividualProduct = () => {
   const { id } = useParams();
   const [property, setProperty] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/property/${id}`)
+    fetch(`https://travellers-nest.herokuapp.com/property/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProperty(data);

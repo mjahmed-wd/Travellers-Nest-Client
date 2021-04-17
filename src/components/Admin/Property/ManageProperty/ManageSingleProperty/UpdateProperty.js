@@ -16,7 +16,7 @@ const UpdateProperty = ({ property, handleClose }) => {
       country: data.country,
       description: data.description,
     };
-    fetch(`http://localhost:5000/updateProperty/${_id}`, {
+    fetch(`https://travellers-nest.herokuapp.com/updateProperty/${_id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(eventData),
