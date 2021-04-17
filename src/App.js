@@ -50,15 +50,15 @@ function App() {
             <Pass />
           </PrivateRoute>
           {/* Admin */}
-          <PrivateRoute path="/manageOrders">
+          <AdminRoute path="/manageOrders">
             <ManageOrders />
-          </PrivateRoute>
-          <PrivateRoute path="/addProperty">
+          </AdminRoute>
+          <AdminRoute path="/addProperty">
             <AddProperty />
-          </PrivateRoute>
-          <PrivateRoute path="/manageProperty">
+          </AdminRoute>
+          <AdminRoute path="/manageProperty">
             <ManageProperty />
-          </PrivateRoute>
+          </AdminRoute>
           <AdminRoute path="/addAdmin">
             <AddAdmin />
           </AdminRoute>

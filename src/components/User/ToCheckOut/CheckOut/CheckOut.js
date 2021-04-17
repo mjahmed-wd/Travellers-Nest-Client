@@ -10,6 +10,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { addDays } from "date-fns";
 import { DateRangePicker } from "react-date-range";
+import SharingSidebar from "../../../Shared/Sidebar/SharingSidebar/SharingSidebar";
 
 const stripePromise = loadStripe(
   "pk_test_51IeCl6GgOq4qQ2BSUHhS6xH9f7j7vCdcz6rQMTyxKVdKzD2tVYTklbGgX0W2ABCHnHpo8gquw9CmxLPBSIvfkoFB001rCrgM2I"
@@ -74,7 +75,7 @@ const CheckOut = () => {
       });
   };
   return (
-    <div>
+    <SharingSidebar>
       <h2>Make Payment for {property?.name}</h2>
       <div style={{ display: shippingData ? "none" : "block" }}>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -113,7 +114,7 @@ const CheckOut = () => {
           <StripeCheckOut placeOrder={placeOrder} />
         </Elements>
       </div>
-    </div>
+    </SharingSidebar>
   );
 };
 

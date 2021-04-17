@@ -18,32 +18,43 @@ const ProvideAuth = ({ children }) => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      if(user){fetch(`http://localhost:5000/checkAdminRole/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.length);
-        if(data.length){
-        user.role="Admin"
-        }
-        else{
-          console.log("Role: User")
-          user.role="User"
-        }
+      if (user) {
+        // refresh JWT token
+        firebase
+          .auth()
+          .currentUser.getIdToken(/* forceRefresh */ false)
+          .then(function (idToken) {
+            localStorage.setItem("token", idToken);
+          })
+          .catch(function (error) {
+            // Handle error
+          });
+        // Check Admin Role
+        fetch(`http://localhost:5000/checkAdminRole/${user.email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data.length);
+            if (data.length) {
+              user.role = "Admin";
+            } else {
+              console.log("Role: User");
+              user.role = "User";
+            }
+            console.log(user?.role);
+            setCurrentUser(user);
+            setPending(false);
+          });
+      } else {
         console.log(user?.role);
-      setCurrentUser(user);
-      setPending(false);
-      });}
-      else{
-        console.log(user?.role);
-      setCurrentUser(user);
-      setPending(false);
+        setCurrentUser(user);
+        setPending(false);
       }
       // console.log(user?.role);
       // setCurrentUser(user);
       // setPending(false);
     });
   }, []);
-// debugger
+  // debugger
   // useEffect(() => {
   //   fetch(`http://localhost:5000/checkAdminRole/${currentUser.email}`)
   //     .then((res) => res.json())
@@ -53,7 +64,7 @@ const ProvideAuth = ({ children }) => {
   //         currentUser.role="Admin"
   //       }
   //     });
-      
+
   // }, [currentUser]);
 
   if (pending) {
@@ -88,6 +99,11 @@ function useProvideAuth() {
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var googleUser = result.user;
+        // firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+        //   localStorage.setItem("token",idToken)
+        // }).catch(function(error) {
+        //   // Handle error
+        // });
         setUser(result.user);
         // ...
       })
