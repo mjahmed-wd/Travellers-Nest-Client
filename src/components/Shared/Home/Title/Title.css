@@ -1,0 +1,11 @@
+.title h5 {
+  margin-right: 5px;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.title-main h5 {
+  font-weight: 700;
+  font-stretch: 100%;
+  color: #EF3F49;
+}

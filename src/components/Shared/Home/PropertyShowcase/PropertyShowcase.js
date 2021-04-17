@@ -11,7 +11,7 @@ const PropertyShowcase = () => {
     })
   }, []);
   return (
-    <div className="d-flex justify-content-center align-items-center mt-5 mb-5">
+    <div className="d-flex justify-content-center align-items-center">
       <div className="container">
       <div className="row">
       {
