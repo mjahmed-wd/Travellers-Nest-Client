@@ -1,0 +1,22 @@
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+.footer {
+    flex-shrink: 0;
+    background-color: #EF3F49;
+    color: white;
+  }
+.footer-data{
+  background-color: white;
+  color: #EF3F49;
+}
+.footer a{
+  text-decoration: none;
+  color: #EF3F49;
+}
+.footer a:hover{
+  text-decoration: none;
+  color: #EF3F49;
+}

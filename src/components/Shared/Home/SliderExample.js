@@ -64,10 +64,10 @@ export const Example = React.memo(function ReviewCard() {
         <IconButton className={styles.favorite}>
           <Favorite />
         </IconButton>
-        <h3 className={styles.title}>Colloseo</h3>
+        <h3 className={styles.title}>Name of the reviewer</h3>
         <Box color={'grey.500'} display={'flex'} alignItems={'center'} mb={1}>
           <LocationOn className={styles.locationIcon} />
-          <span>Rome</span>
+          <span>Checked In</span>
         </Box>
         <Box
           display={'flex'}
@@ -75,9 +75,9 @@ export const Example = React.memo(function ReviewCard() {
           mb={1}
           className={gutterStyles.parent}
         >
-          <Rating name={'rating'} value={2} size={'small'} />
+          <Rating name={'rating'} value={5} size={'small'} />
           <Typography variant={'body2'} className={styles.rateValue}>
-            4.0
+            5.0
           </Typography>
         </Box>
         <Typography color={'textSecondary'} variant={'body2'}>
@@ -89,32 +89,8 @@ export const Example = React.memo(function ReviewCard() {
           justifyContent={'space-between'}
           alignItems={'center'}
         >
-          <Box
-            display={'flex'}
-            alignItems={'center'}
-            className={gutterStyles.parent}
-          >
-            <FaceGroup
-              faces={[
-                'https://i.pravatar.cc/300?img=1',
-                'https://i.pravatar.cc/300?img=2',
-                'https://i.pravatar.cc/300?img=3',
-                'https://i.pravatar.cc/300?img=4',
-              ]}
-              size={32}
-              offset={-12}
-            />
-            <Typography
-              component={'span'}
-              variant={'body2'}
-              color={'textSecondary'}
-            >
-              +420
-            </Typography>
-          </Box>
-          <IconButton size={'small'}>
-            <MoreHoriz />
-          </IconButton>
+          
+    
         </Box>
       </CardContent>
     </Card>

@@ -12,10 +12,12 @@ const ReviewContainer = () => {
         })
     },[])
     return (
-        <div>
+        <div className="container">
+            <div className="row">
             {
                 allReviews.map(review=><ReviewCard key={review._id} singleReview={review} />)
             }
+            </div> 
         </div>
     );
 };
