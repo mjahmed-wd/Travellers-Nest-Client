@@ -17,6 +17,7 @@ import AddProperty from "./components/Admin/Property/AddProperty/AddProperty";
 import ManageProperty from "./components/Admin/Property/ManageProperty/ManageProperty";
 import ManageOrders from "./components/Admin/Admin-ManageAllOrders/ManageOrders";
 import AddAdmin from "./components/Admin/AdminRoleManage/AddAdmin/AddAdmin";
+import AdminRoute from "./components/Shared/AdminRoute/AdminRoute";
 
 function App() {
   return (
@@ -58,9 +59,9 @@ function App() {
           <PrivateRoute path="/manageProperty">
             <ManageProperty />
           </PrivateRoute>
-          <PrivateRoute path="/addAdmin">
+          <AdminRoute path="/addAdmin">
             <AddAdmin />
-          </PrivateRoute>
+          </AdminRoute>
         </Switch>
       </Router>
       {/* </UserContext.Provider> */}

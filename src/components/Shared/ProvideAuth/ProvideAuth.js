@@ -7,7 +7,6 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { createContext } from "react";
 
-
 export const AuthContext = createContext();
 
 const ProvideAuth = ({ children }) => {
@@ -15,22 +14,56 @@ const ProvideAuth = ({ children }) => {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [pending, setPending] = useState(true);
-    const auth = useProvideAuth();
+  const auth = useProvideAuth();
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
+      if(user){fetch(`http://localhost:5000/checkAdminRole/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.length);
+        if(data.length){
+        user.role="Admin"
+        }
+        else{
+          console.log("Role: User")
+          user.role="User"
+        }
+        console.log(user?.role);
       setCurrentUser(user);
       setPending(false);
-      console.log(user)
+      });}
+      else{
+        console.log(user?.role);
+      setCurrentUser(user);
+      setPending(false);
+      }
+      // console.log(user?.role);
+      // setCurrentUser(user);
+      // setPending(false);
     });
   }, []);
+// debugger
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/checkAdminRole/${currentUser.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if(data.length){
+  //         currentUser.role="Admin"
+  //       }
+  //     });
+      
+  // }, [currentUser]);
 
   if (pending) {
     return <h2>Loading</h2>;
   }
 
   return (
-    <AuthContext.Provider value={{currentUser,auth}}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ currentUser, auth }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
@@ -41,14 +74,12 @@ export const useAuth = () => {
 };
 
 function useProvideAuth() {
-
   firebaseInitialization();
 
   const [user, setUser] = useState(null);
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
   const signin = () => {
-      
     const provider = new firebase.auth.GoogleAuthProvider();
 
     return firebase
