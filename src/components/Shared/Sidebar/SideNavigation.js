@@ -21,6 +21,9 @@ const SideNavigation = () => {
       <Link to="/manageProperty" className={url === "manageProperty" ? "active" : ""}>
         Manage Property
       </Link>
+      <Link to="/addAdmin" className={url === "addAdmin" ? "active" : ""}>
+        Add Admin
+      </Link>
     </div>
   );
 };

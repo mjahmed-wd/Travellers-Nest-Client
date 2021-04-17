@@ -16,6 +16,7 @@ import Review from "./components/User/Review/Review";
 import AddProperty from "./components/Admin/Property/AddProperty/AddProperty";
 import ManageProperty from "./components/Admin/Property/ManageProperty/ManageProperty";
 import ManageOrders from "./components/Admin/Admin-ManageAllOrders/ManageOrders";
+import AddAdmin from "./components/Admin/AdminRoleManage/AddAdmin/AddAdmin";
 
 function App() {
   return (
@@ -56,6 +57,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/manageProperty">
             <ManageProperty />
+          </PrivateRoute>
+          <PrivateRoute path="/addAdmin">
+            <AddAdmin />
           </PrivateRoute>
         </Switch>
       </Router>
