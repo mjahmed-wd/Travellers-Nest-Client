@@ -11,11 +11,15 @@ const PropertyShowcase = () => {
     })
   }, []);
   return (
-    <div style={{height:"50vh"}} className="d-flex justify-content-center align-items-center">
-      
-        {
-            properties.length && properties.map(property=><IndividualPropertyCard key={property._id} property={property}/>)
+    <div className="d-flex justify-content-center align-items-center mt-5 mb-5">
+      <div className="container">
+      <div className="row">
+      {
+            properties.length && properties.map(property=><div key={property._id} className="col-md-4 col-sm-12 mb-5"><IndividualPropertyCard property={property}/></div>)
         }
+      </div>
+      </div>
+     
     </div>
   );
 };

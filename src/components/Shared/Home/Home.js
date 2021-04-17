@@ -12,7 +12,7 @@ const Home = () => {
             <Introduction/>
             <PropertyShowcase/>
             <h2>Header</h2>
-            {/* <ReviewContainer/> */}
+            <ReviewContainer/>
             <Example/>
         </>
     );

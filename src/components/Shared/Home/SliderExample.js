@@ -1,154 +1,124 @@
 import React from 'react';
-import NoSsr from '@material-ui/core/NoSsr';
-// import GoogleFontLoader from 'react-google-font-loader';
+import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { Row, Item } from '@mui-treasury/components/flex';
-import { Info, InfoSubtitle, InfoTitle } from '@mui-treasury/components/info';
-import { useNewsInfoStyles } from '@mui-treasury/styles/info/news';
-import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
+import Rating from '@material-ui/lab/Rating';
+import IconButton from '@material-ui/core/IconButton';
+import LocationOn from '@material-ui/icons/LocationOn';
+import MoreHoriz from '@material-ui/icons/MoreHoriz';
+import Favorite from '@material-ui/icons/Favorite';
+import FaceGroup from '@mui-treasury/components/group/face';
+import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
+import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
+import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
 
 const useStyles = makeStyles(() => ({
-  card: {
-    minWidth: 320,
-    position: 'relative',
-    boxShadow: '0 8px 24px 0 rgba(0,0,0,0.12)',
-    overflow: 'visible',
-    borderRadius: '1.5rem',
-    transition: '0.4s',
-    '&:hover': {
-      transform: 'translateY(-2px)',
-      '& $shadow': {
-        bottom: '-1.5rem',
-      },
-      '& $shadow2': {
-        bottom: '-2.5rem',
-      },
-    },
-    '&:before': {
-      content: '""',
-      position: 'absolute',
-      zIndex: 0,
-      display: 'block',
-      width: '100%',
-      bottom: -1,
-      height: '100%',
-      borderRadius: '1.5rem',
-      backgroundColor: 'rgba(0,0,0,0.08)',
-    },
-  },
-  main: {
-    overflow: 'hidden',
-    borderTopLeftRadius: '1.5rem',
-    borderTopRightRadius: '1.5rem',
-    zIndex: 1,
-    '&:after': {
-      content: '""',
-      position: 'absolute',
-      bottom: 0,
-      display: 'block',
-      width: '100%',
-      height: '100%',
-      background: 'linear-gradient(to top, #014a7d, rgba(0,0,0,0))',
-    },
-  },
-  content: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    zIndex: 1,
-    padding: '1.5rem 1.5rem 1rem',
-  },
-  avatar: {
-    width: 48,
-    height: 48,
-  },
-  tag: {
-    display: 'inline-block',
-    backgroundColor: '#ff5dac',
-    borderRadius: '0.5rem',
-    padding: '2px 0.5rem',
-    color: '#fff',
-    marginBottom: '0.5rem',
+  root: {
+    overflow: 'initial',
+    maxWidth: 304,
+    backgroundColor: 'transparent',
   },
   title: {
-    fontSize: '2rem',
-    fontWeight: 800,
-    color: '#fff',
+    marginBottom: 0,
   },
-  author: {
-    zIndex: 1,
+  rateValue: {
+    fontWeight: 'bold',
+    marginTop: 2,
+  },
+  content: {
     position: 'relative',
-    borderBottomLeftRadius: '1.5rem',
-    borderBottomRightRadius: '1.5rem',
+    padding: 24,
+    margin: '-24% 16px 0',
+    backgroundColor: '#fff',
+    borderRadius: 4,
   },
-  shadow: {
-    transition: '0.2s',
+  favorite: {
     position: 'absolute',
-    zIndex: 0,
-    width: '88%',
-    height: '100%',
-    bottom: 0,
-    borderRadius: '1.5rem',
-    backgroundColor: 'rgba(0,0,0,0.06)',
-    left: '50%',
-    transform: 'translateX(-50%)',
+    top: 12,
+    right: 12,
   },
-  shadow2: {
-    bottom: 0,
-    width: '72%',
-    backgroundColor: 'rgba(0,0,0,0.04)',
+  locationIcon: {
+    marginRight: 4,
+    fontSize: 18,
   },
 }));
 
-export const Example = React.memo(function News3Card() {
+export const Example = React.memo(function ReviewCard() {
   const styles = useStyles();
-  const mediaStyles = useCoverCardMediaStyles();
+  const mediaStyles = useWideCardMediaStyles();
+  const shadowStyles = useFadedShadowStyles();
+  const gutterStyles = usePushingGutterStyles({ firstExcluded: true });
   return (
-    <>
-      
-      <Card className={styles.card}>
-        <Box className={styles.main} minHeight={300} position={'relative'}>
-          <CardMedia
-            classes={mediaStyles}
-            image={
-              'https://cdn.britannica.com/97/189797-050-1FC0041B/Night-view-Dhaka-Bangladesh.jpg'
-            }
-          />
-          <div className={styles.content}>
-            <div className={styles.tag}>Hotel</div>
-            <Typography variant={'h2'} className={styles.title}>
-              My Booking Place
-            </Typography>
-          </div>
+    <Card elevation={0} className={styles.root}>
+      <CardMedia
+        classes={mediaStyles}
+        image={
+          'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'
+        }
+      />
+      <CardContent className={cx(shadowStyles.root, styles.content)}>
+        <IconButton className={styles.favorite}>
+          <Favorite />
+        </IconButton>
+        <h3 className={styles.title}>Colloseo</h3>
+        <Box color={'grey.500'} display={'flex'} alignItems={'center'} mb={1}>
+          <LocationOn className={styles.locationIcon} />
+          <span>Rome</span>
         </Box>
-        <Row
-          className={styles.author}
-          m={0}
-          p={3}
-          pt={2}
-          gap={2}
-          bgcolor={'common.white'}
+        <Box
+          display={'flex'}
+          alignItems={'center'}
+          mb={1}
+          className={gutterStyles.parent}
         >
-          <Item>
-            <Avatar
-              className={styles.avatar}
-              src={'https://cdn.britannica.com/67/6267-004-10A21DF0/Flag-Bangladesh.jpg'}
+          <Rating name={'rating'} value={2} size={'small'} />
+          <Typography variant={'body2'} className={styles.rateValue}>
+            4.0
+          </Typography>
+        </Box>
+        <Typography color={'textSecondary'} variant={'body2'}>
+          All the text I typed for review will be shown here
+        </Typography>
+        <Box
+          mt={2}
+          display={'flex'}
+          justifyContent={'space-between'}
+          alignItems={'center'}
+        >
+          <Box
+            display={'flex'}
+            alignItems={'center'}
+            className={gutterStyles.parent}
+          >
+            <FaceGroup
+              faces={[
+                'https://i.pravatar.cc/300?img=1',
+                'https://i.pravatar.cc/300?img=2',
+                'https://i.pravatar.cc/300?img=3',
+                'https://i.pravatar.cc/300?img=4',
+              ]}
+              size={32}
+              offset={-12}
             />
-          </Item>
-          <Info position={'middle'} useStyles={useNewsInfoStyles}>
-            <InfoTitle>Dhaka</InfoTitle>
-            <InfoSubtitle>Bangladesh</InfoSubtitle>
-          </Info>
-        </Row>
-        <div className={styles.shadow} />
-        <div className={`${styles.shadow} ${styles.shadow2}`} />
-      </Card>
-    </>
+            <Typography
+              component={'span'}
+              variant={'body2'}
+              color={'textSecondary'}
+            >
+              +420
+            </Typography>
+          </Box>
+          <IconButton size={'small'}>
+            <MoreHoriz />
+          </IconButton>
+        </Box>
+      </CardContent>
+    </Card>
   );
 });
+
 export default Example

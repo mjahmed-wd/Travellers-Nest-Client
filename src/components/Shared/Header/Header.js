@@ -24,7 +24,7 @@ const {currentUser,auth}=useContext(AuthContext)
       >
         <Container>
           <Link to="/">
-            <Navbar.Brand>Evergreen Housing</Navbar.Brand>
+            <Navbar.Brand>Travellers Nest</Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
