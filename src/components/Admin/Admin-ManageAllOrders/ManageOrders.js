@@ -42,7 +42,7 @@ const ManageOrders = () => {
                       <th>Guest Name</th>
                       <th>Guest Email</th>
                       <th>Guest Phone</th>
-                      <th>Payment Status & TransactionId</th>
+                      <th>Payment Status </th>
                       <th>Booking Status</th>
                     </tr>
                   </thead>

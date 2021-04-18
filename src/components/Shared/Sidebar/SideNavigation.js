@@ -22,10 +22,10 @@ const SideNavigation = () => {
      {currentUser?.role==="Admin" && <> <Link to="/manageOrders" className={url === "manageOrders" ? "active" : ""}>
         Manage Orders
       </Link>
-      <Link to="/addService" className={url === "addProperty" ? "active" : ""}>
+      <Link to="/addService" className={url === "addService" ? "active" : ""}>
         Add Service
       </Link>
-      <Link to="/manageServices" className={url === "manageProperty" ? "active" : ""}>
+      <Link to="/manageServices" className={url === "manageServices" ? "active" : ""}>
         Manage Services
       </Link>
       <Link to="/addAdmin" className={url === "addAdmin" ? "active" : ""}>

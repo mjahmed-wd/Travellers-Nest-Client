@@ -26,7 +26,7 @@ const Orders = () => {
           <tr>
             <th>Tracking ID</th>
             <th>Service Name</th>
-            <th>Charge</th>
+            <th>Charge $</th>
             <th>Living Date</th>
             <th>Order Placing Time</th>
             <th>Status</th>
