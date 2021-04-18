@@ -78,10 +78,10 @@ const ReviewCard = ({ singleReview }) => {
             mb={1}
             className={gutterStyles.parent}
           >
-            <Rating name={"rating"} value={5} size={"small"} />
+            {/* <Rating name={"rating"} value={5} size={"small"} />
             <Typography variant={"body2"} className={styles.rateValue}>
               5.0
-            </Typography>
+            </Typography> */}
           </Box>
           <Typography color={"textSecondary"} variant={"body2"}>
             {review}

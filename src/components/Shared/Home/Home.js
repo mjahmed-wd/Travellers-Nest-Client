@@ -16,7 +16,7 @@ const Home = () => {
       <Introduction />
 
       <div className="light-bg-color">
-        <Title secondaryWord="Our" titleWord="Coverage" />
+        <Title secondaryWord="Our" titleWord="Services" />
         <PropertyShowcase />
       </div>
 
