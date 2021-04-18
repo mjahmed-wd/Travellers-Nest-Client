@@ -20,7 +20,6 @@ const ManageSingleOrderItem = ({ order }) => {
   const { name, email, phoneNumber, checkIN: checkIn, checkOut } = checkInInfo;
   const [show, setShow] = useState(false);
   const [modalVisibility, setModalVisibility] = useState(false);
-  console.log(modalVisibility);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

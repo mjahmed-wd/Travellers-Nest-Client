@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
-import Example from "../../../Shared/Home/SliderExample";
-import { AuthContext } from "../../../Shared/ProvideAuth/ProvideAuth";
 import cx from "clsx";
 import Header from "../../../Shared/Header/Header"
 import Footer from "../../../Shared/Footer/Footer"
@@ -36,7 +34,6 @@ const IndividualProduct = () => {
   const shadowStyles = useOverShadowStyles({ inactive: true });
 
   const history = useHistory();
-  const { currentUser, auth } = useContext(AuthContext);
   // const { displayName: userName, photoURL, email } = currentUser;
   const { id } = useParams();
   const [property, setProperty] = useState({});
@@ -48,7 +45,6 @@ const IndividualProduct = () => {
       });
   }, [id]);
   const {
-    _id,
     name,
     address,
     country,
@@ -75,7 +71,7 @@ const IndividualProduct = () => {
               <CardContent>
                 <TextInfoContent
                   classes={textCardContentStyles}
-                  overline={`${price}$ per night`}
+                  overline={`${price}$ per day`}
                   heading={`${name} - ${address}, ${country}`}
                   body={`${description}`}
                 />

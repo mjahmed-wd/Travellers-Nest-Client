@@ -3,9 +3,6 @@ import React, { createContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import SharingSidebar from "../../../Shared/Sidebar/SharingSidebar/SharingSidebar";
 import ManageSingleProperty from "./ManageSingleProperty/ManageSingleProperty";
-import UpdateProperty from "./ManageSingleProperty/UpdateProperty";
-// import SideNavigation from "../SideNavigation/SideNavigation";
-// import ManageSingleProduct from "./ManageSingleProduct";
 
 export const PropertyContext = createContext();
 
@@ -41,7 +38,7 @@ const ManageProperty = () => {
                     <tr>
                       <th>#</th>
                       <th>Property Name</th>
-                      <th>Charge Per Night</th>
+                      <th>Charge Per Day</th>
                       <th>Address</th>
                       <th>Country</th>
                       <th>Description</th>

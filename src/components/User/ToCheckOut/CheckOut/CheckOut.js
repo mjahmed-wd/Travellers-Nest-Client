@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { AuthContext } from "../../../Shared/ProvideAuth/ProvideAuth";
@@ -29,15 +28,14 @@ const CheckOut = () => {
     },
   ]);
   console.log("start", dateState[0].startDate, "end", dateState[0].endDate);
-  const { currentUser, auth } = useContext(AuthContext);
-  const { displayName: userName, photoURL, email, phoneNumber } = currentUser;
+  const { currentUser } = useContext(AuthContext);
+  const { displayName: userName, email, phoneNumber } = currentUser;
   const id = localStorage.getItem("propertyID");
   console.log(id);
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -65,7 +63,7 @@ const CheckOut = () => {
         console.log("property", data);
       });
   }, [id]);
-  const { _id, name, address, country, price, description } = property;
+  const { price } = property;
   const placeOrder = (transactionID) => {
     // const orderPlacingTime = new Date();
     const orderData = {
@@ -98,7 +96,7 @@ const CheckOut = () => {
         </div>
         <div className="text-center">
           <h4>
-            {property?.name} - {property?.address} - {property?.price}$/Night{" "}
+            {property?.name} - {property?.address} - {property?.price}$/Day{" "}
           </h4>
         </div>
       </div>
@@ -141,9 +139,7 @@ const CheckOut = () => {
             ranges={dateState}
             direction="horizontal"
           />
-          {/* <div>
-          <input type="submit" />
-          </div> */}
+
           <div className="text-center mt-3">
             <Button classes={chubbyStyles} type="submit">
               Proceed to Checkout

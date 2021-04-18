@@ -1,13 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Shared/Home/Home";
 import Login from "./components/Shared/Login/Login";
-import { createContext } from "react";
-import { useState } from "react";
 import ProvideAuth from "./components/Shared/ProvideAuth/ProvideAuth";
 import PrivateRoute from "./components/Shared/PrivateRoute/PrivateRoute";
-import Pass from "./components/Shared/Pass/Pass";
 import "bootstrap/dist/css/bootstrap.min.css";
 import IndividualProduct from "./components/User/ToCheckOut/IndividualProduct/IndividualProduct";
 import CheckOut from "./components/User/ToCheckOut/CheckOut/CheckOut";
@@ -43,12 +40,7 @@ function App() {
           <PrivateRoute path="/userReview">
             <Review />
           </PrivateRoute>
-          <PrivateRoute path="/pass">
-            <Pass />
-          </PrivateRoute>
-          <PrivateRoute path="/admin">
-            <Pass />
-          </PrivateRoute>
+          
           {/* Admin */}
           <AdminRoute path="/manageOrders">
             <ManageOrders />

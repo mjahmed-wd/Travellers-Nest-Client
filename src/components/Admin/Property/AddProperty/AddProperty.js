@@ -17,7 +17,6 @@ const AddProperty = () => {
       description: data.description,
       imageURL: imageURL,
     };
-    console.log(eventData);
     const url = `https://travellers-nest.herokuapp.com/addProperty`;
     fetch(url, {
       method: "POST",
@@ -32,8 +31,6 @@ const AddProperty = () => {
   };
 
   const handleImageUpload = (event) => {
-    debugger;
-    console.log("image selected");
     const imageData = new FormData();
     imageData.set("key", "8bc92ea2aef5c437abee8233cb8457b2");
     imageData.append("image", event.target.files[0]);
@@ -63,7 +60,7 @@ const AddProperty = () => {
             <h6>Charge</h6>
             <input
               className="form-control"
-              placeholder="Per Night Charge"
+              placeholder="Per Day Charge"
               {...register("price", { required: true })}
             />
           </div>

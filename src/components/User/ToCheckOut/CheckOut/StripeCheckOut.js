@@ -61,9 +61,7 @@ const StripeCheckOut = ({ placeOrder }) => {
           CVC
           <CardCvcElement />
         </label>
-        <button type="submit" disabled={!stripe}>
-          Pay
-        </button>
+        
         <div className="w-25">
           <Button classes={chubbyStyles} type="submit" disabled={!stripe}>
             Place Order

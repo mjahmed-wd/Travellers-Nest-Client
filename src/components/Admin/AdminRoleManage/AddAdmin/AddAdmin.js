@@ -12,7 +12,6 @@ const AddAdmin = () => {
       email: data.email,
       designation: data.designation
     };
-    console.log(addAdminData);
     const url = `https://travellers-nest.herokuapp.com/addAdmin`;
     fetch(url, {
       method: "POST",

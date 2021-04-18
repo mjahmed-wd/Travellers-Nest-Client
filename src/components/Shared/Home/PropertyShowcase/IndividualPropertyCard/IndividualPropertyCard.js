@@ -1,7 +1,5 @@
 import { useHistory } from 'react-router-dom';
 import React from 'react';
-import NoSsr from '@material-ui/core/NoSsr';
-// import GoogleFontLoader from 'react-google-font-loader';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
@@ -111,20 +109,10 @@ const IndividualPropertyCard = ({property}) => {
     const styles = useStyles();
     const mediaStyles = useCoverCardMediaStyles();
 
-const {_id: id,name,address,country,price,description,imageURL}=property
+const {_id: id,name,address,country,imageURL}=property
 const history=useHistory()
 
     return (<>
-        {/* <div>
-            <h1>{name}</h1>
-            <h3>{address}</h3>
-            <h3>{ country }</h3>
-            <h3>{ price }</h3>
-            <h3>{ description }</h3>
-            <button onClick={()=>history.push(`/property/${id}`)} >Checkout</button>
-        </div> */}
-
-
         <Card className={styles.card}>
         <Box className={styles.main} minHeight={300} position={'relative'}>
           <CardMedia
@@ -132,7 +120,7 @@ const history=useHistory()
             image={imageURL}
           />
           <div className={styles.content} >
-            <div className={styles.tag}>Hotel</div>
+            <div className={styles.tag}>Service</div>
             <Typography variant={'h2'} className={styles.title} style={{cursor:"pointer"}} onClick={()=>history.push(`/property/${id}`)}>
               {name}
             </Typography>

@@ -14,7 +14,6 @@ const ManageOrders = () => {
       fetch(`https://travellers-nest.herokuapp.com/allPlacedOrders`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data)
           setPlacedOrders(data);
           setLoading(false);
         });

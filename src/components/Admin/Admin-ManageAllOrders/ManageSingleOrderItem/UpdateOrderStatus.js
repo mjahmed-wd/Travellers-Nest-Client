@@ -10,7 +10,6 @@ const UpdateOrderStatus = ({ order, handleClose }) => {
     const { _id, name, price, address, country, description } = order;
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
    
     fetch(`https://travellers-nest.herokuapp.com/updateOrderStatus/${_id}`, {
       method: "PATCH",

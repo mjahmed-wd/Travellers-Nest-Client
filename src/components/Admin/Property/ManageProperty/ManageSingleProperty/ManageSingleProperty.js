@@ -3,14 +3,10 @@ import { useState } from "react";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
 import UpdateProperty from "./UpdateProperty";
-import { useContext } from "react";
-import { PropertyContext } from "../ManageProperty";
 import { Button, Modal } from "react-bootstrap";
 
 const ManageSingleProperty = ({ property }) => {
   const [show, setShow] = useState(false);
-  const [modalVisibility,setModalVisibility] = useState(false);
-console.log(modalVisibility)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -30,22 +26,22 @@ console.log(modalVisibility)
   return (
     <tr>
       <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Update Information of {name}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <UpdateProperty property={property} handleClose={handleClose} />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        <Modal.Header closeButton>
+          <Modal.Title>Update Information of {name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <UpdateProperty property={property} handleClose={handleClose} />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
-        {/* react modal */}
-        {/* <UpdateProperty setModalVisibility={setModalVisibility}/> */}
-        
+      {/* react modal */}
+      {/* <UpdateProperty setModalVisibility={setModalVisibility}/> */}
+
       {hidden === false && (
         <>
           <td>*</td>
@@ -57,7 +53,7 @@ console.log(modalVisibility)
           <td className="d-flex justify-content-around">
             <EditOutlinedIcon
               style={{ cursor: "pointer" }}
-              onClick={()=>setShow(true)}
+              onClick={() => setShow(true)}
             />
             <DeleteForeverOutlinedIcon
               style={{ cursor: "pointer" }}

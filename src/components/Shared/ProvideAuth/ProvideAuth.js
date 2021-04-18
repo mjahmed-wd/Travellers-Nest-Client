@@ -3,9 +3,9 @@ import firebase from "firebase/app";
 import { useState } from "react";
 import { useEffect } from "react";
 import { firebaseInitialization } from "../Login/FirebaseRefectored";
-import { useHistory, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { createContext } from "react";
+import { CircularProgress } from "@material-ui/core";
 
 export const AuthContext = createContext();
 
@@ -30,17 +30,19 @@ const ProvideAuth = ({ children }) => {
             // Handle error
           });
         // Check Admin Role
-        fetch(`https://travellers-nest.herokuapp.com/checkAdminRole/${user.email}`)
+        fetch(
+          `https://travellers-nest.herokuapp.com/checkAdminRole/${user.email}`
+        )
           .then((res) => res.json())
           .then((data) => {
-            console.log(data.length);
+            // console.log(data.length);
             if (data.length) {
               user.role = "Admin";
             } else {
-              console.log("Role: User");
+              // console.log("Role: User");
               user.role = "User";
             }
-            console.log(user?.role);
+            // console.log(user?.role);
             setCurrentUser(user);
             setPending(false);
           });
@@ -49,26 +51,15 @@ const ProvideAuth = ({ children }) => {
         setCurrentUser(user);
         setPending(false);
       }
-      // console.log(user?.role);
-      // setCurrentUser(user);
-      // setPending(false);
     });
   }, []);
-  // debugger
-  // useEffect(() => {
-  //   fetch(`https://travellers-nest.herokuapp.com/checkAdminRole/${currentUser.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       if(data.length){
-  //         currentUser.role="Admin"
-  //       }
-  //     });
-
-  // }, [currentUser]);
 
   if (pending) {
-    return <h2>Loading</h2>;
+    return (
+      <div className="text-center">
+        <CircularProgress />
+      </div>
+    );
   }
 
   return (
@@ -98,12 +89,8 @@ function useProvideAuth() {
       .signInWithPopup(provider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
-        var googleUser = result.user;
-        // firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-        //   localStorage.setItem("token",idToken)
-        // }).catch(function(error) {
-        //   // Handle error
-        // });
+        // var googleUser = result.user;
+
         setUser(result.user);
         // ...
       })

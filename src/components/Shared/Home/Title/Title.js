@@ -3,7 +3,7 @@ import "./Title.css"
 
 const Title = ({ titleWord, secondaryWord }) => {
   return (
-    <div className="title d-flex justify-content-center mt-5 mb-5">
+    <div className="title d-flex justify-content-center pt-5 pb-5">
       <div>
       <h5>{secondaryWord} </h5> 
       </div>

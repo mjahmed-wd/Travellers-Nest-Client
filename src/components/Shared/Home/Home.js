@@ -3,7 +3,6 @@ import Header from "../Header/Header";
 import PropertyShowcase from "./PropertyShowcase/PropertyShowcase";
 import ReviewContainer from "./Review/ReviewContainer/ReviewContainer";
 import Introduction from "./Introduction/Introduction";
-import Example from "./SliderExample";
 import Footer from "../Footer/Footer";
 import BlogSection from "./BlogSection/BlogSection";
 import Email from "./Email/Email";
@@ -13,15 +12,25 @@ const Home = () => {
   return (
     <>
       <Header />
+
       <Introduction />
-      <Title secondaryWord="Our" titleWord="Hotels" />
-      <PropertyShowcase />
+
+      <div className="light-bg-color">
+        <Title secondaryWord="Our" titleWord="Coverage" />
+        <PropertyShowcase />
+      </div>
+
       <Title secondaryWord="Happy" titleWord="Customers" />
       <ReviewContainer />
-      <Title secondaryWord="Know more from our" titleWord="Blogs" />
-      <BlogSection />
+
+      <div className="light-bg-color">
+        <Title secondaryWord="Our" titleWord="Blogs" />
+        <BlogSection />
+      </div>
+
       <Title secondaryWord="submit" titleWord="query" />
       <Email />
+
       <Footer />
     </>
   );

@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+.light-bg-color{
+  background-color: #ecececad;
+}
 .bg{
   background-color: #EF3F49;
   }

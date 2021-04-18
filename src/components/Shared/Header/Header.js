@@ -7,8 +7,8 @@ import { AuthContext } from "../ProvideAuth/ProvideAuth";
 import "./Header.css";
 
 const Header = () => {
-//   const [user, setUser] = useContext(UserContext);
-const {currentUser,auth}=useContext(AuthContext)
+  //   const [user, setUser] = useContext(UserContext);
+  const { currentUser, auth } = useContext(AuthContext);
 
   const handleLogOut = () => {
     auth.signout().then((res) => console.log("user singed out response"));
@@ -29,7 +29,7 @@ const {currentUser,auth}=useContext(AuthContext)
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              {currentUser===null && (
+              {currentUser === null && (
                 <Link
                   to="/login"
                   style={{
@@ -47,27 +47,43 @@ const {currentUser,auth}=useContext(AuthContext)
               )}
 
               {currentUser && (
-                <NavDropdown title={currentUser?.displayName} id="basic-nav-dropdown">
-                  <NavDropdown.Item>
-                    <img src={currentUser?.photoURL} className="img-fluid img-thumbnail" alt=""/>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className="w-100">
-                  <h6 onClick={currentUser?.role==="Admin"?()=>history.push('/manageOrders'):()=>history.push('/orders')}>DashBoard</h6>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className="w-100">
-                      <h6 onClick={()=>history.push('/orders')}>
-                      My Activity
+                <>
+                  <Nav.Link
+                    onClick={
+                      currentUser?.role === "Admin"
+                        ? () => history.push("/manageOrders")
+                        : () => history.push("/orders")
+                    }
+                  >
+                    Dashboard
+                  </Nav.Link>
+                  <NavDropdown
+                    title={currentUser?.displayName}
+                    id="basic-nav-dropdown"
+                  >
+                    <NavDropdown.Item>
+                      <img
+                        src={currentUser?.photoURL}
+                        className="img-fluid img-thumbnail"
+                        alt=""
+                      />
+                    </NavDropdown.Item>
+                    <NavDropdown.Item className="w-100"></NavDropdown.Item>
+                    <NavDropdown.Item className="w-100">
+                      <h6 onClick={() => history.push("/orders")}>
+                        My Activity
                       </h6>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <button
-                      onClick={() => handleLogOut()}
-                      className="btn btn-warning"
-                    >
-                      Log Out
-                    </button>
-                  </NavDropdown.Item>
-                </NavDropdown>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <button
+                        onClick={() => handleLogOut()}
+                        className="btn btn-warning"
+                      >
+                        Log Out
+                      </button>
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
               )}
             </Nav>
           </Navbar.Collapse>

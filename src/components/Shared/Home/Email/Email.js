@@ -1,32 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import { useGradientBtnStyles } from "@mui-treasury/styles/button/gradient";
-import { usePushingGutterStyles } from "@mui-treasury/styles/gutter/pushing";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-}));
 
 const Email = () => {
-  const classes = useStyles();
-  const styles = useGradientBtnStyles();
   const chubbyStyles = useGradientBtnStyles({ chubby: true });
-  const gutterStyles = usePushingGutterStyles({
-    cssProp: "marginBottom",
-    space: 2,
-  });
+  
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {

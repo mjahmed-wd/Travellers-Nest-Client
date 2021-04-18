@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
-import bgImg from "../../../../image/hero-search-bg.png";
-import happyCustomer from "../../../../image/couple.png"
+import React from "react";
 import "./Introduction.css";
-import { useHistory } from "react-router";
 
 const Introduction = () => {
-  const history=useHistory()
   return (
     // Hero section / Introduction
     <div className="hero-section">
