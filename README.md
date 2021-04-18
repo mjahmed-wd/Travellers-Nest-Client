@@ -2,6 +2,8 @@
 
 Visit [Website](https://travellers-nest.web.app/).
 
+# The site has persistence login, if user reloads the page page he will still have his logged in credentials.
+
 ## Technology Used
 
 1. React Js

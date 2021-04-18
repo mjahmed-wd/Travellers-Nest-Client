@@ -8,7 +8,7 @@ const SharingSidebar = ({ children }) => {
     <div>
       <Header />
         <div className="row w-100">
-          <div className=" col-md-3">
+          <div className="col-md-3" style={{height:"100vh"}}>
             <SideNavigation />
           </div>
           <div className="col-md-8">{children}</div>

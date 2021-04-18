@@ -1,4 +1,5 @@
 import React, {  useEffect, useState } from "react";
+import { CircularProgress } from "@material-ui/core";
 import { useHistory, useParams } from "react-router";
 import cx from "clsx";
 import Header from "../../../Shared/Header/Header"
@@ -27,6 +28,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const IndividualProduct = () => {
+  const [loading, setLoading] = useState(true);
   const chubbyStyles = useGradientBtnStyles({ chubby: true });
   const styles = useStyles();
   const mediaStyles = useFourThreeCardMediaStyles();
@@ -42,6 +44,7 @@ const IndividualProduct = () => {
       .then((res) => res.json())
       .then((data) => {
         setProperty(data);
+        setLoading(false)
       });
   }, [id]);
   const {
@@ -59,6 +62,13 @@ const IndividualProduct = () => {
   return (
     <>
     <Header/>
+    {loading ? (
+            <div className="text-center">
+              <CircularProgress />
+            </div>
+          ) : (
+            ""
+          )}
       {property?.name && (
         <>
           {" "}
