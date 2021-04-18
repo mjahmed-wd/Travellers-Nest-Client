@@ -52,7 +52,7 @@ const AddProperty = () => {
             <h6>Name</h6>
             <input
               className="form-control"
-              placeholder="Property Name"
+              placeholder="Package Title"
               {...register("name", { required: true })}
             />
           </div>
@@ -68,7 +68,7 @@ const AddProperty = () => {
             <h6>Address</h6>
             <input
               className="form-control"
-              placeholder="House Name & Details"
+              placeholder="Address"
               {...register("address", { required: true })}
             />
           </div>
