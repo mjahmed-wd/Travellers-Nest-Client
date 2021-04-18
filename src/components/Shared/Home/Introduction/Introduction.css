@@ -5,6 +5,14 @@
     height: 70vh;
     color: white;
 }
+.hero-section a{
+    text-decoration: none;
+    color: white;
+}
+.hero-section a:hover{
+    text-decoration: none;
+    color: white;
+}
 .hero-section div{
     /* height: 100%; */
 }

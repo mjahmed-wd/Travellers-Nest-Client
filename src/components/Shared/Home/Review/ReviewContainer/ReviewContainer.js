@@ -12,7 +12,7 @@ const ReviewContainer = () => {
         })
     },[])
     return (
-        <div className="container">
+        <div className="container d-flex justify-content-center">
             <div className="row">
             {
                 allReviews.map(review=><ReviewCard key={review._id} singleReview={review} />)

@@ -6,8 +6,13 @@ import {
   CardCvcElement,
   CardExpiryElement,
 } from "@stripe/react-stripe-js";
+import Button from "@material-ui/core/Button";
+import { useGradientBtnStyles } from "@mui-treasury/styles/button/gradient";
+import { useHistory } from "react-router-dom";
 
-const StripeCheckOut = ({placeOrder}) => {
+const StripeCheckOut = ({ placeOrder }) => {
+  const history = useHistory();
+  const chubbyStyles = useGradientBtnStyles({ chubby: true });
   const stripe = useStripe();
   const elements = useElements();
 
@@ -28,14 +33,16 @@ const StripeCheckOut = ({placeOrder}) => {
       card: elements.getElement(CardNumberElement),
     });
     if (error) {
-        setPaymentError(error.message)
-        setPaymentSuccess(null)
+      setPaymentError(error.message);
+      setPaymentSuccess(null);
       console.log(error);
     } else {
-        setPaymentSuccess(paymentMethod.id)
-        setPaymentError(null)
-        placeOrder(paymentMethod.id)
+      setPaymentSuccess(paymentMethod.id);
+      setPaymentError(null);
+      placeOrder(paymentMethod.id);
       console.log(paymentMethod);
+      alert('Order Placed Successfully')
+      history.push("/orders");
     }
     console.log("[PaymentMethod]", payload);
   };
@@ -57,9 +64,18 @@ const StripeCheckOut = ({placeOrder}) => {
         <button type="submit" disabled={!stripe}>
           Pay
         </button>
+        <div className="w-25">
+          <Button classes={chubbyStyles} type="submit" disabled={!stripe}>
+            Place Order
+          </Button>
+        </div>
       </form>
-      {paymentError && <p style={{color: 'red'}}>{paymentError}</p>}
-      {paymentSuccess && <p style={{color: 'green'}}>Payment Success. Order processing started.</p> }
+      {paymentError && <p style={{ color: "red" }}>{paymentError}</p>}
+      {paymentSuccess && (
+        <p style={{ color: "green" }}>
+          Payment Success. Order processing started.
+        </p>
+      )}
     </>
   );
 };

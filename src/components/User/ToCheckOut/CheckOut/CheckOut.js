@@ -5,9 +5,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import { AuthContext } from "../../../Shared/ProvideAuth/ProvideAuth";
 import StripeCheckOut from "./StripeCheckOut";
 import { useForm } from "react-hook-form";
-// material ui input
-import { makeStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
+import Button from "@material-ui/core/Button";
+import { useGradientBtnStyles } from "@mui-treasury/styles/button/gradient";
+import "../../../Shared/Home/Title/Title.css";
 // date picker
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -18,16 +18,8 @@ import SharingSidebar from "../../../Shared/Sidebar/SharingSidebar/SharingSideba
 const stripePromise = loadStripe(
   "pk_test_51IeCl6GgOq4qQ2BSUHhS6xH9f7j7vCdcz6rQMTyxKVdKzD2tVYTklbGgX0W2ABCHnHpo8gquw9CmxLPBSIvfkoFB001rCrgM2I"
 );
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-}));
 const CheckOut = () => {
-  const classes = useStyles();
+  const chubbyStyles = useGradientBtnStyles({ chubby: true });
   // date selection
   const [dateState, setDateState] = useState([
     {
@@ -36,7 +28,7 @@ const CheckOut = () => {
       key: "selection",
     },
   ]);
-  console.log("start",dateState[0].startDate, "end",dateState[0].endDate)
+  console.log("start", dateState[0].startDate, "end", dateState[0].endDate);
   const { currentUser, auth } = useContext(AuthContext);
   const { displayName: userName, photoURL, email, phoneNumber } = currentUser;
   const id = localStorage.getItem("propertyID");
@@ -51,10 +43,17 @@ const CheckOut = () => {
 
   const [shippingData, setShippingData] = useState(null);
   const onSubmit = (data) => {
-    data.checkIN=dateState[0].startDate
-    data.checkOut=dateState[0].endDate
+    data.checkIN = dateState[0].startDate;
+    data.checkOut = dateState[0].endDate;
+    const totalDayCount =
+      (new Date(dateState[0].endDate).getTime() -
+        new Date(dateState[0].startDate).getTime()) /
+        (1000 * 3600 * 24) +
+      1;
+    property.totalCharge = price * totalDayCount;
+    // data.totalDayCount = totalDayCount;
     setShippingData(data);
-    console.log(data);
+    // console.log(data, totalDayCount);
   };
 
   const [property, setProperty] = useState({});
@@ -74,7 +73,7 @@ const CheckOut = () => {
       checkInInfo: shippingData,
       orderPlacingTime: new Date(),
       transactionID,
-      status: "processing",
+      status: "Processing",
     };
     fetch(`https://travellers-nest.herokuapp.com/addOrder`, {
       method: "POST",
@@ -88,34 +87,52 @@ const CheckOut = () => {
   };
   return (
     <SharingSidebar>
-      <h2>Make Payment for {property?.name}</h2>
+      <div className="Checkout-Product-Data-Showing mb-3">
+        <div className="title d-flex justify-content-center mt-2 mb-2">
+          <div>
+            <h5>Confirm </h5>
+          </div>
+          <div className="title-main">
+            <h5>Order</h5>
+          </div>
+        </div>
+        <div className="text-center">
+          <h4>
+            {property?.name} - {property?.address} - {property?.price}$/Night{" "}
+          </h4>
+        </div>
+      </div>
       <div style={{ display: shippingData ? "none" : "block" }}>
-        <form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column">
+        <form onSubmit={handleSubmit(onSubmit)} className="text-center">
           {/* register your input into the hook by invoking the "register" function */}
-          <Input inputProps={{ 'aria-label': 'description' }} className="mb-3" placeholder="Your Name" defaultValue={userName}
-            {...register("name", { required: true })} />
-          {/* <input
-            defaultValue={userName}
-            {...register("name", { required: true })}
-          /> */}
-          {errors.name && <span>This field is required</span>}
+          <div className="d-flex justify-content-center">
+            <input
+              className="form-control w-75 mb-3"
+              defaultValue={userName}
+              {...register("name", { required: true })}
+            />
+            {errors.name && <span>This field is required</span>}
+          </div>
+
           {/* include validation with required or other standard HTML validation rules */}
-          <Input inputProps={{ 'aria-label': 'description' }} className="mb-3" placeholder="Your Email" defaultValue={email}
-            {...register("email", { required: true })}/>
-          {/* <input
-            defaultValue={email}
-            {...register("email", { required: true })}
-          /> */}
-          {/* errors will return when field validation fails  */}
-          <Input inputProps={{ 'aria-label': 'description' }} className="mb-3" placeholder="Your Phone Number" defaultValue={phoneNumber}
-            {...register("phoneNumber", { required: true })} />
-          {errors.email && <span>This field is required</span>}
-          {/* <input
-            defaultValue={phoneNumber}
-            {...register("phoneNumber", { required: true })}
-          /> */}
-          {/* errors will return when field validation fails  */}
-          {errors.phoneNumber && <span>This field is required</span>}
+          <div className="d-flex justify-content-center">
+            <input
+              className="form-control w-75 mb-3"
+              defaultValue={email}
+              {...register("email", { required: true })}
+            />
+            {/* errors will return when field validation fails  */}
+            {errors.email && <span>This field is required</span>}
+          </div>
+          <div className="d-flex justify-content-center">
+            <input
+              className="form-control w-75 mb-3"
+              defaultValue={phoneNumber}
+              {...register("phoneNumber", { required: true })}
+            />
+            {/* errors will return when field validation fails  */}
+            {errors.phoneNumber && <span>This field is required</span>}
+          </div>
           <DateRangePicker
             onChange={(item) => setDateState([item.selection])}
             showSelectionPreview={true}
@@ -124,10 +141,20 @@ const CheckOut = () => {
             ranges={dateState}
             direction="horizontal"
           />
+          {/* <div>
           <input type="submit" />
+          </div> */}
+          <div className="text-center mt-3">
+            <Button classes={chubbyStyles} type="submit">
+              Proceed to Checkout
+            </Button>
+          </div>
         </form>
       </div>
       <div style={{ display: shippingData ? "block" : "none" }}>
+        <div className="text-center mb-3">
+          <h5>Total Charge: {property?.totalCharge}$</h5>
+        </div>
         <Elements stripe={stripePromise}>
           <StripeCheckOut placeOrder={placeOrder} />
         </Elements>

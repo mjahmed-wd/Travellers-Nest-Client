@@ -36,7 +36,7 @@ const Email = () => {
  We will soon contact you at ${data.email}.`);
   };
   return (
-    <div className="container mb-5 d-flex justify-content-center">
+    <div className="container mb-5 d-flex justify-content-center" id="query">
       <div className="w-50">
         <form onSubmit={handleSubmit(onSubmit)} className=" d-flex flex-column">
           <Input

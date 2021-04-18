@@ -26,7 +26,7 @@ const Review = () => {
   return (
     <SharingSidebar>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-3">
+            <div className="mt-3 mb-3">
               <label defaultValue="test" htmlFor="name" className="form-label">
                 Your Name
               </label>
@@ -51,7 +51,7 @@ const Review = () => {
               ></textarea>
               {errors.review && <span>This field is required</span>}
             </div>
-            <input type="submit" />
+            <button className="btn btn-dark" type="submit">Submit</button>
           </form>
     </SharingSidebar>
   );

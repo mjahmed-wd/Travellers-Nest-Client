@@ -8,8 +8,8 @@ const SideNavigation = () => {
 
   const url = window.location.href.split("/")[3];
   return (
-    <div className="d-flex flex-column bg-primary text-center side_navigation">
-      <Link to="/checkout" className={url === "checkout" ? "active" : ""}>
+    <div className="d-flex flex-column bg-dark text-center side_navigation">
+      {currentUser?.role==="User"&&<><Link to="/checkout" className={url === "checkout" ? "active" : ""}>
         Check Out
       </Link>
       <Link to="/orders" className={url === "orders" ? "active" : ""}>
@@ -17,7 +17,8 @@ const SideNavigation = () => {
       </Link>
       <Link to="/userReview" className={url === "userReview" ? "active" : ""}>
         Review
-      </Link>
+      </Link></>}
+
      {currentUser?.role==="Admin" && <> <Link to="/manageOrders" className={url === "manageOrders" ? "active" : ""}>
         Manage Orders
       </Link>

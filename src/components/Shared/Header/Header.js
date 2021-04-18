@@ -19,7 +19,7 @@ const {currentUser,auth}=useContext(AuthContext)
       <Navbar
         collapseOnSelect
         expand="lg"
-        className="navbar navbar-dark bg-primary"
+        className="navbar navbar-dark bg-dark"
         sticky="top"
       >
         <Container>
@@ -29,12 +29,6 @@ const {currentUser,auth}=useContext(AuthContext)
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link onClick={() => history.push("/")}>Home</Nav.Link>
-              <Nav.Link onClick={() => history.push("/orders")}>
-                Orders
-              </Nav.Link>
-              <Nav.Link onClick={() => history.push("/userReview")}>Review</Nav.Link>
-              <Nav.Link>Deals</Nav.Link>
               {currentUser===null && (
                 <Link
                   to="/login"
@@ -58,7 +52,9 @@ const {currentUser,auth}=useContext(AuthContext)
                     <img src={currentUser?.photoURL} className="img-fluid img-thumbnail" alt=""/>
                   </NavDropdown.Item>
                   <NavDropdown.Item className="w-100">
-                    
+                  <h6 onClick={currentUser?.role==="Admin"?()=>history.push('/manageOrders'):()=>history.push('/orders')}>DashBoard</h6>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item className="w-100">
                       <h6 onClick={()=>history.push('/orders')}>
                       My Activity
                       </h6>
