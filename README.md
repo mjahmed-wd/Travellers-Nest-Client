@@ -23,7 +23,7 @@ Visit [Website](https://github.com/facebook/create-react-app).
 - Admin can see and change booking status.
 - Admin can add other admins.
 
-** Homepage Sections
+## Homepage Sections
 
 1. Into Section.
 2. Hotel Showcase.
