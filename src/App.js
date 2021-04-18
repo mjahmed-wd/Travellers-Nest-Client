@@ -27,7 +27,7 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <PrivateRoute path="/property/:id">
+          <PrivateRoute path="/service/:id">
             <IndividualProduct />
           </PrivateRoute>
           <PrivateRoute path="/checkout">
@@ -45,10 +45,10 @@ function App() {
           <AdminRoute path="/manageOrders">
             <ManageOrders />
           </AdminRoute>
-          <AdminRoute path="/addProperty">
+          <AdminRoute path="/addService">
             <AddProperty />
           </AdminRoute>
-          <AdminRoute path="/manageProperty">
+          <AdminRoute path="/manageServices">
             <ManageProperty />
           </AdminRoute>
           <AdminRoute path="/addAdmin">

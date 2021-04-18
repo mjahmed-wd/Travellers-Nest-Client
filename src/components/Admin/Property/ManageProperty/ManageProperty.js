@@ -37,7 +37,7 @@ const ManageProperty = () => {
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Property Name</th>
+                      <th>Service Name</th>
                       <th>Charge Per Day</th>
                       <th>Address</th>
                       <th>Country</th>

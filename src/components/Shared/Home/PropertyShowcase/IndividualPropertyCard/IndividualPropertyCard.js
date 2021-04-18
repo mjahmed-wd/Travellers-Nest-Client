@@ -121,7 +121,7 @@ const history=useHistory()
           />
           <div className={styles.content} >
             <div className={styles.tag}>Service</div>
-            <Typography variant={'h2'} className={styles.title} style={{cursor:"pointer"}} onClick={()=>history.push(`/property/${id}`)}>
+            <Typography variant={'h2'} className={styles.title} style={{cursor:"pointer"}} onClick={()=>history.push(`/service/${id}`)}>
               {name}
             </Typography>
           </div>
@@ -140,7 +140,7 @@ const history=useHistory()
               src={'https://cdn.britannica.com/67/6267-004-10A21DF0/Flag-Bangladesh.jpg'}
             />
           </Item>
-          <Info position={'middle'} useStyles={useNewsInfoStyles}  style={{cursor:"pointer"}} onClick={()=>history.push(`/property/${id}`)}>
+          <Info position={'middle'} useStyles={useNewsInfoStyles}  style={{cursor:"pointer"}} onClick={()=>history.push(`/service/${id}`)}>
             <InfoTitle>{address}</InfoTitle>
             <InfoSubtitle>{country}</InfoSubtitle>
           </Info>
