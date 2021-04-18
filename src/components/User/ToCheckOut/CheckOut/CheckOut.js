@@ -5,6 +5,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import { AuthContext } from "../../../Shared/ProvideAuth/ProvideAuth";
 import StripeCheckOut from "./StripeCheckOut";
 import { useForm } from "react-hook-form";
+// material ui input
+import { makeStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
 // date picker
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -15,7 +18,16 @@ import SharingSidebar from "../../../Shared/Sidebar/SharingSidebar/SharingSideba
 const stripePromise = loadStripe(
   "pk_test_51IeCl6GgOq4qQ2BSUHhS6xH9f7j7vCdcz6rQMTyxKVdKzD2tVYTklbGgX0W2ABCHnHpo8gquw9CmxLPBSIvfkoFB001rCrgM2I"
 );
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 const CheckOut = () => {
+  const classes = useStyles();
   // date selection
   const [dateState, setDateState] = useState([
     {
@@ -78,24 +90,30 @@ const CheckOut = () => {
     <SharingSidebar>
       <h2>Make Payment for {property?.name}</h2>
       <div style={{ display: shippingData ? "none" : "block" }}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column">
           {/* register your input into the hook by invoking the "register" function */}
-          <input
+          <Input inputProps={{ 'aria-label': 'description' }} className="mb-3" placeholder="Your Name" defaultValue={userName}
+            {...register("name", { required: true })} />
+          {/* <input
             defaultValue={userName}
             {...register("name", { required: true })}
-          />
+          /> */}
           {errors.name && <span>This field is required</span>}
           {/* include validation with required or other standard HTML validation rules */}
-          <input
+          <Input inputProps={{ 'aria-label': 'description' }} className="mb-3" placeholder="Your Email" defaultValue={email}
+            {...register("email", { required: true })}/>
+          {/* <input
             defaultValue={email}
             {...register("email", { required: true })}
-          />
+          /> */}
           {/* errors will return when field validation fails  */}
+          <Input inputProps={{ 'aria-label': 'description' }} className="mb-3" placeholder="Your Phone Number" defaultValue={phoneNumber}
+            {...register("phoneNumber", { required: true })} />
           {errors.email && <span>This field is required</span>}
-          <input
+          {/* <input
             defaultValue={phoneNumber}
             {...register("phoneNumber", { required: true })}
-          />
+          /> */}
           {/* errors will return when field validation fails  */}
           {errors.phoneNumber && <span>This field is required</span>}
           <DateRangePicker

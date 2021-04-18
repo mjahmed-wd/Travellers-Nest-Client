@@ -1,99 +1,51 @@
 import React from 'react';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Rating from '@material-ui/lab/Rating';
-import IconButton from '@material-ui/core/IconButton';
-import LocationOn from '@material-ui/icons/LocationOn';
-import MoreHoriz from '@material-ui/icons/MoreHoriz';
-import Favorite from '@material-ui/icons/Favorite';
-import FaceGroup from '@mui-treasury/components/group/face';
-import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
-import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
-import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
+import TextInfoContent from '@mui-treasury/components/content/textInfo';
+import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree';
+import { useN04TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n04';
+import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
 
 const useStyles = makeStyles(() => ({
   root: {
-    overflow: 'initial',
-    maxWidth: 304,
-    backgroundColor: 'transparent',
+    maxWidth: '75%',
+    margin: 'auto',
+    borderRadius: 12,
+    padding: 12,
   },
-  title: {
-    marginBottom: 0,
-  },
-  rateValue: {
-    fontWeight: 'bold',
-    marginTop: 2,
-  },
-  content: {
-    position: 'relative',
-    padding: 24,
-    margin: '-24% 16px 0',
-    backgroundColor: '#fff',
-    borderRadius: 4,
-  },
-  favorite: {
-    position: 'absolute',
-    top: 12,
-    right: 12,
-  },
-  locationIcon: {
-    marginRight: 4,
-    fontSize: 18,
+  media: {
+    borderRadius: 6,
   },
 }));
-
 export const Example = React.memo(function ReviewCard() {
   const styles = useStyles();
-  const mediaStyles = useWideCardMediaStyles();
-  const shadowStyles = useFadedShadowStyles();
-  const gutterStyles = usePushingGutterStyles({ firstExcluded: true });
+  const mediaStyles = useFourThreeCardMediaStyles();
+  const textCardContentStyles = useN04TextInfoContentStyles();
+  const shadowStyles = useOverShadowStyles({ inactive: true });
   return (
-    <Card elevation={0} className={styles.root}>
+    <div className="container mt-5 mb-5">
+      <Card className={cx(styles.root, shadowStyles.root)}>
       <CardMedia
-        classes={mediaStyles}
+        className={cx(styles.media, mediaStyles.root)}
         image={
-          'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'
+          'https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80'
         }
       />
-      <CardContent className={cx(shadowStyles.root, styles.content)}>
-        <IconButton className={styles.favorite}>
-          <Favorite />
-        </IconButton>
-        <h3 className={styles.title}>Name of the reviewer</h3>
-        <Box color={'grey.500'} display={'flex'} alignItems={'center'} mb={1}>
-          <LocationOn className={styles.locationIcon} />
-          <span>Checked In</span>
-        </Box>
-        <Box
-          display={'flex'}
-          alignItems={'center'}
-          mb={1}
-          className={gutterStyles.parent}
-        >
-          <Rating name={'rating'} value={5} size={'small'} />
-          <Typography variant={'body2'} className={styles.rateValue}>
-            5.0
-          </Typography>
-        </Box>
-        <Typography color={'textSecondary'} variant={'body2'}>
-          All the text I typed for review will be shown here
-        </Typography>
-        <Box
-          mt={2}
-          display={'flex'}
-          justifyContent={'space-between'}
-          alignItems={'center'}
-        >
-          
-    
-        </Box>
+      <CardContent>
+        <TextInfoContent
+          classes={textCardContentStyles}
+          overline={'Bill'}
+          heading={'Building Name'}
+          body={
+            'That year, collection of songs, review melodies, memories full, this is a long and warm TThat year, collection of songs, review melodies, memories full, this is a long and warm That year, collection of songs, review melodies, memories full, this is a long and warm journeyThat year, collection of songs, review melodies, memories full, this is a long and warm of songs, review melodies, memories full, this is a long and warm TThat year, collection of songs, review melodies, memories full, this is a long and warm That year, collection of songs, review melodies, memories full, this is a long and warm journeyThat year, collection of songs, review melodies, memories full, this is a long and warm '
+          }
+        />
       </CardContent>
     </Card>
+    </div>
   );
 });
 

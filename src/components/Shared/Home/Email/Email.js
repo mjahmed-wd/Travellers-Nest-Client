@@ -81,7 +81,7 @@ const Email = () => {
           )}
           <div className="d-flex justify-content-center">
             <Button classes={chubbyStyles} type="submit">
-              Chubby
+              Submit
             </Button>
           </div>
         </form>

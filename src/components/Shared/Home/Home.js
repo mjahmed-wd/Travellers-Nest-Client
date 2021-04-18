@@ -18,7 +18,6 @@ const Home = () => {
       <PropertyShowcase />
       <Title secondaryWord="Happy" titleWord="Customers" />
       <ReviewContainer />
-      {/* <Example/> */}
       <Title secondaryWord="Know more from our" titleWord="Blogs" />
       <BlogSection />
       <Title secondaryWord="submit" titleWord="query" />
