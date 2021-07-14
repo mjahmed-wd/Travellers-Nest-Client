@@ -6,7 +6,6 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Rating from "@material-ui/lab/Rating";
 import IconButton from "@material-ui/core/IconButton";
 import LocationOn from "@material-ui/icons/LocationOn";
 import Favorite from "@material-ui/icons/Favorite";

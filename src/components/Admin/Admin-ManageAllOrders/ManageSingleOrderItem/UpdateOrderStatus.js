@@ -7,7 +7,7 @@ const UpdateOrderStatus = ({ order, handleClose }) => {
   const [productChangeStatus, setProductChangeStatus] = useContext(
     AllPlacedOrderContext
   );
-    const { _id, name, price, address, country, description } = order;
+    const { _id } = order;
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
    

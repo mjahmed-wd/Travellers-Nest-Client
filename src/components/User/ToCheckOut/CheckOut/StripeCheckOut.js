@@ -9,6 +9,7 @@ import {
 import Button from "@material-ui/core/Button";
 import { useGradientBtnStyles } from "@mui-treasury/styles/button/gradient";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const StripeCheckOut = ({ placeOrder }) => {
   const history = useHistory();
@@ -41,7 +42,7 @@ const StripeCheckOut = ({ placeOrder }) => {
       setPaymentError(null);
       placeOrder(paymentMethod.id);
       console.log(paymentMethod);
-      alert('Order Placed Successfully')
+      toast.success('Order Placed Successfully')
       history.push("/orders");
     }
     console.log("[PaymentMethod]", payload);

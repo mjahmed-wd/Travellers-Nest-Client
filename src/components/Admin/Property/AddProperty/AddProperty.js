@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import "./AddProperty.css";
 import SharingSidebar from "../../../Shared/Sidebar/SharingSidebar/SharingSidebar";
 import PublishIcon from "@material-ui/icons/Publish";
+import { toast } from "react-toastify";
 
 const AddProperty = () => {
   const { register, handleSubmit } = useForm();
@@ -26,7 +27,7 @@ const AddProperty = () => {
       },
       body: JSON.stringify(eventData),
     }).then((res) => {
-      alert("Data Added Successfully");
+      toast.success("Data Added Successfully");
     });
   };
 

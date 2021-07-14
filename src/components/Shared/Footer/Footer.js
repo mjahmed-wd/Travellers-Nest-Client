@@ -24,6 +24,7 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { toast } from "react-toastify";
 
 // import { FontProvider, Font } from 'website/src/components/Font';
 
@@ -94,7 +95,7 @@ const Footer = () => {
                 </CategoryProvider>
                 <EmailSubscribe
                   onSubmit={(email) =>
-                    alert(`Your email ${email} is registered successfully.`)
+                    toast.success(`Your email ${email} is registered successfully.`)
                   }
                   useStyles={useInfoEmailSubscribeStyles}
                   inputClearedAfterSubmit

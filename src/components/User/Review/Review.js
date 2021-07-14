@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import SharingSidebar from "../../Shared/Sidebar/SharingSidebar/SharingSidebar";
 
 const Review = () => {
@@ -17,7 +18,7 @@ const Review = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert("Review Added");
+        toast.success("Review Added");
       });
   };
   return (

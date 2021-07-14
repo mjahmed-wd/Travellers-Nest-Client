@@ -9,7 +9,6 @@ const ManageSingleProperty = ({ property }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const { _id, name, price, address, country, description } = property;
   const [hidden, makeHidden] = useState(false);

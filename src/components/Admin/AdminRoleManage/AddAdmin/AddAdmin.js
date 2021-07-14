@@ -1,7 +1,7 @@
 import React from 'react';
 import SharingSidebar from '../../../Shared/Sidebar/SharingSidebar/SharingSidebar';
-import PublishIcon from "@material-ui/icons/Publish";
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 
 const AddAdmin = () => {
@@ -18,7 +18,7 @@ const AddAdmin = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addAdminData),
     }).then((res) => {
-      alert("Data Added Successfully")
+      toast.success("Data Added Successfully")
     });
   };
 

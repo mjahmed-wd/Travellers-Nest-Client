@@ -3,11 +3,10 @@ import { useForm } from "react-hook-form";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import { useGradientBtnStyles } from "@mui-treasury/styles/button/gradient";
+import { toast } from "react-toastify";
 
 const Email = () => {
   const chubbyStyles = useGradientBtnStyles({ chubby: true });
-  
-
   const {
     register,
     handleSubmit,
@@ -15,9 +14,9 @@ const Email = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    alert(`Mr. ${data.name} , we received your query about 
-"${data.query}".
- We will soon contact you at ${data.email}.`);
+    toast.success(`Mr. ${data.name} , we received your query about 
+    "${data.query}".
+    We will soon contact you at ${data.email}.`);
   };
   return (
     <div className="container mb-5 d-flex justify-content-center" id="query">
@@ -70,7 +69,6 @@ const Email = () => {
           </div>
         </form>
       </div>
-
       <div />
     </div>
   );
